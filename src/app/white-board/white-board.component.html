@@ -1,3 +1,18 @@
-<p>
-  white-board works!
-</p>
+<div class="container-fluid">
+  <h1>
+    White Board
+  </h1>
+
+  <a routerLink="/login">Login</a>
+  <br/>
+  <a routerLink="/register">Register</a>
+  <h2 hidden="">Courses Enrolled</h2>
+  <ul hidden=""
+      class="list-group">
+    <li class="list-group-item">
+      course
+    </li>
+  </ul>
+
+  <app-course-grid></app-course-grid>
+</div>

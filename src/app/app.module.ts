@@ -4,17 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { WhiteBoardComponent } from './white-board/white-board.component';
 import {routing} from './app.routing';
+import { CourseGridComponent } from './course-grid/course-grid.component';
+import {CourseServiceClient} from './services/course.service.client';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WhiteBoardComponent
+    WhiteBoardComponent,
+    CourseGridComponent
   ],
   imports: [
     BrowserModule,
     routing
   ],
-  providers: [],
+  providers: [
+    CourseServiceClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

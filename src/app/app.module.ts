@@ -2,13 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { WhiteBoardComponent } from './white-board/white-board.component';
+import {routing} from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WhiteBoardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

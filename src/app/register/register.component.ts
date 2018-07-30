@@ -23,9 +23,13 @@ export class RegisterComponent implements OnInit {
     } else {
       this.service
         .createUser(username, password)
-        .then(() => {
+        .then(response => {
           // console.log(user);
-          this.router.navigate(['profile']);
+          if (response === null) {
+            alert('username already exists!');
+          } else {
+            this.router.navigate(['profile']);
+          }
         });
     }
   }

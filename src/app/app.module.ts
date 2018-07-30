@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule} from '@angular/forms';
 import {UserServiceClient} from './services/user.service.client';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
+import {SectionServiceClient} from './services/section.service.client';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     CourseGridComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers: [
     CourseServiceClient,
-    UserServiceClient
+    UserServiceClient,
+    SectionServiceClient
   ],
   bootstrap: [AppComponent]
 })

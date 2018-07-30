@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h1>Profile</h1>
+  <br/>
+  <a [hidden]="user.username !== 'admin'"
+     routerLink="/admin">Go To Admin Page</a>
+  <br/>
+  <input [(ngModel)]="user.username"
+         placeholder="username"
+         class="form-control"/>
+  <input [(ngModel)]="user.firstName"
+         placeholder="first name"
+         class="form-control"/>
+  <input [(ngModel)]="user.lastName"
+         placeholder="lastName"
+         class="form-control"/>
+  <input [(ngModel)]="user.email"
+  placeholder="email"
+  class="form-control"/>
+  <button (click)="update()"
+          class="btn btn-primary btn-block">
+    Update
+  </button>
+
+  <a (click)="logout()"
+     routerLink="/login">Logout</a>
+  <a class="float-right"
+      routerLink="/home">Home</a>
+
+</div>

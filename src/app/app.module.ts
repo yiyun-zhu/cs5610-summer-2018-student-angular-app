@@ -6,19 +6,29 @@ import { WhiteBoardComponent } from './white-board/white-board.component';
 import {routing} from './app.routing';
 import { CourseGridComponent } from './course-grid/course-grid.component';
 import {CourseServiceClient} from './services/course.service.client';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {FormsModule} from '@angular/forms';
+import {UserServiceClient} from './services/user.service.client';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WhiteBoardComponent,
-    CourseGridComponent
+    CourseGridComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     routing
   ],
   providers: [
-    CourseServiceClient
+    CourseServiceClient,
+    UserServiceClient
   ],
   bootstrap: [AppComponent]
 })

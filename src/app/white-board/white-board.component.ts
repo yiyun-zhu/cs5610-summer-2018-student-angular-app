@@ -11,14 +11,16 @@ export class WhiteBoardComponent implements OnInit {
 
   constructor(private service: UserServiceClient) { }
 
-  user = '';
+  // logged = false;
+  username = null;
   courses = [];
   ngOnInit() {
     this.service
       .profile()
       .then(user => {
           if (user) {
-            this.user = user;
+            this.username = user.username;
+            // this.logged = true;
           }
        });
   }

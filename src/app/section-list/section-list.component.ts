@@ -22,6 +22,7 @@ export class SectionListComponent implements OnInit {
   sections = [];
   logged = false;
   loadSection(courseId) {
+    this.courseId = courseId;
     this.findSectionsForCourse(courseId);
   }
   findSectionsForCourse(courseId) {

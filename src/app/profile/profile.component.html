@@ -31,7 +31,9 @@
     <ul class="list-group">
       <li *ngFor="let enrollment of sections"
           class="list-group-item">
-        Course: {{enrollment.section.courseId}} | {{enrollment.section.name}}
+        <a routerLink="/course/{{enrollment.section.courseId}}/section">
+          Course: {{enrollment.section.courseId}} | {{enrollment.section.name}}
+        </a>
         <button (click)="unenroll(enrollment.section._id)"
                 class="float-right btn-danger">
           Unenroll</button>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SectionServiceClient} from '../services/section.service.client';
-import {ActivatedRoute} from '@angular/router';
-import {CourseServiceClient} from '../services/course.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
-import {Course} from '../models/course.model.client';
 
 @Component({
   selector: 'app-section-list',
@@ -14,7 +12,8 @@ export class SectionListComponent implements OnInit {
 
   constructor(private service: SectionServiceClient,
               private service2: UserServiceClient,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.route.params.subscribe(
       params => this.loadSection(params.courseId));
   }
@@ -38,6 +37,7 @@ export class SectionListComponent implements OnInit {
           alert('already enrolled!');
         } else {
           alert('enrolled!');
+          this.router.navigate(['profile']);
         }
       });
   }

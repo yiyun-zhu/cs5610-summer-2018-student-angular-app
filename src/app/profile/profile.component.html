@@ -27,7 +27,7 @@
       routerLink="/home">Home</a>
 
   <div [hidden]="user.username === 'admin'">
-    <h2>Sections: {{sections.length}}</h2>
+    <h2>Sections ({{sections.length}})</h2>
     <ul class="list-group">
       <li *ngFor="let enrollment of sections"
           class="list-group-item">

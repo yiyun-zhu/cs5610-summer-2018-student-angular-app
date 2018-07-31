@@ -1,6 +1,6 @@
 export class UserServiceClient {
 
-  // URL = 'http://localhost:4000/api/';
+  // LOCAL_URL = 'http://localhost:4000';
   REMOTE_URL = 'https://afternoon-waters-34919.herokuapp.com';
   logout() {
     return fetch(this.REMOTE_URL + '/api/logout', {
@@ -17,8 +17,7 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }})
-      .then(response => response.json())
-      .catch(err => null);
+      .then(response => response.json());
   }
   profile() {
     return fetch(this.REMOTE_URL + '/api/profile', {

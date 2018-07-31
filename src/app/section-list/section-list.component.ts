@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SectionServiceClient} from '../services/section.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.clients';
 
 @Component({
   selector: 'app-section-list',
@@ -21,6 +22,7 @@ export class SectionListComponent implements OnInit {
   courseId = '';
   sections = [];
   logged = false;
+  user = new User();
   loadSection(courseId) {
     this.courseId = courseId;
     this.findSectionsForCourse(courseId);
@@ -46,6 +48,7 @@ export class SectionListComponent implements OnInit {
     this.service2.profile()
       .then(user => {
         if (user) {
+          this.user = user;
           this.logged = true;
         }
       });

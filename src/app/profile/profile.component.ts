@@ -37,7 +37,11 @@ export class ProfileComponent implements OnInit {
   loadSections() {
     this.service1
       .findSectionsForStudent()
-      .then(sections => this.sections = sections);
+      .then(sections => {
+        if (sections !== null) {
+          this.sections = sections;
+        }
+      });
   }
   ngOnInit() {
     this.service.profile()

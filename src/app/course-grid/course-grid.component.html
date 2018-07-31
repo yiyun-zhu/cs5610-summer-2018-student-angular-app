@@ -6,11 +6,12 @@
       <div class="card-body">
         <h5 class="card-title">{{course.title}}</h5>
         <p class="card-text">course content</p>
-        <a hidden=""
+        <a
            routerLink="/course/{{course.id}}"
-           class="btn btn-primary">Go To</a>
+           class="btn-primary">View Course</a>
+        <br/>
         <a routerLink="/course/{{course.id}}/section"
-           class="btn btn-primary">Enroll</a>
+           class="btn-primary">Enroll</a>
       </div>
     </div>
   </div>

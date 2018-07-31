@@ -11,7 +11,6 @@ export class WhiteBoardComponent implements OnInit {
 
   constructor(private service: UserServiceClient) { }
 
-  // logged = false;
   username = null;
   courses = [];
   ngOnInit() {
@@ -20,7 +19,6 @@ export class WhiteBoardComponent implements OnInit {
       .then(user => {
           if (user) {
             this.username = user.username;
-            // this.logged = true;
           }
        });
   }

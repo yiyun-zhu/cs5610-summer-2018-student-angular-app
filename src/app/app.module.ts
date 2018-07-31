@@ -14,6 +14,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import {SectionServiceClient} from './services/section.service.client';
 import { SectionListComponent } from './section-list/section-list.component';
+import { CourseViewerComponent } from './course-viewer/course-viewer.component';
+import { ModuleListComponent } from './module-list/module-list.component';
+import {ModuleServiceClient} from './services/module.service.client';
+import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
+import {LessonServiceClient} from './services/lesson.service.client';
+import { WidgetListComponent } from './widget-list/widget-list.component';
+import {WidgetServiceClient} from './services/widget.service.client';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,11 @@ import { SectionListComponent } from './section-list/section-list.component';
     RegisterComponent,
     ProfileComponent,
     AdminComponent,
-    SectionListComponent
+    SectionListComponent,
+    CourseViewerComponent,
+    ModuleListComponent,
+    LessonTabsComponent,
+    WidgetListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +45,10 @@ import { SectionListComponent } from './section-list/section-list.component';
   providers: [
     CourseServiceClient,
     UserServiceClient,
-    SectionServiceClient
+    SectionServiceClient,
+    ModuleServiceClient,
+    LessonServiceClient,
+    WidgetServiceClient
   ],
   bootstrap: [AppComponent]
 })

@@ -1,15 +1,16 @@
 export class UserServiceClient {
 
   // URL = 'http://localhost:4000/api/';
+  REMOTE_URL = 'https://afternoon-waters-34919.herokuapp.com';
   logout() {
-    return fetch('http://localhost:4000/api/logout', {
+    return fetch(this.REMOTE_URL + '/api/logout', {
       method: 'post',
       credentials: 'include'
     });
   }
   login(username, password) {
     const credentials = {username, password};
-    return fetch('http://localhost:4000/api/login', {
+    return fetch(this.REMOTE_URL + '/api/login', {
       body: JSON.stringify(credentials),
       method: 'post',
       credentials: 'include',
@@ -20,7 +21,7 @@ export class UserServiceClient {
       .catch(err => null);
   }
   profile() {
-    return fetch('http://localhost:4000/api/profile', {
+    return fetch(this.REMOTE_URL + '/api/profile', {
       credentials: 'include',
     })
       .then(response => response.json())
@@ -28,7 +29,7 @@ export class UserServiceClient {
   }
   createUser(username, password) {
     const user = {username, password};
-    return fetch('http://localhost:4000/api/user', {
+    return fetch(this.REMOTE_URL + '/api/user', {
       body: JSON.stringify(user),
       method: 'post',
       credentials: 'include',
@@ -41,7 +42,7 @@ export class UserServiceClient {
   }
   updateUser(firstName, lastName, email) {
     const update = {firstName, lastName, email};
-    return fetch('http://localhost:4000/api/profile', {
+    return fetch(this.REMOTE_URL + '/api/profile', {
       body: JSON.stringify(update),
       method: 'put',
       credentials: 'include',

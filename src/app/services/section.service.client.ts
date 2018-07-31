@@ -1,21 +1,23 @@
 export class SectionServiceClient {
-  SECTION_URL = 'http://localhost:4000/api/course/CID/section';
+  // SECTION_URL = 'http://localhost:4000/api/course/CID/section';
+  REMOTE_URL = 'https://afternoon-waters-34919.herokuapp.com';
+  SECTION_URL = this.REMOTE_URL + '/api/course/CID/section';
   unenrollStudentFromSection(sectionId) {
-    const url = 'http://localhost:4000/api/student/section/' + sectionId;
+    const url = this.REMOTE_URL + '/api/student/section/' + sectionId;
     return fetch(url, {
       method: 'delete',
       credentials: 'include'
     });
   }
   findSectionsForStudent() {
-    const url = 'http://localhost:4000/api/student/section';
+    const url = this.REMOTE_URL + '/api/student/section';
     return fetch(url, {
       credentials: 'include'
     })
       .then(response => response.json());
   }
   enrollStudentInSection(sectionId) {
-    const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
+    const url = this.REMOTE_URL + '/api/section/' + sectionId + '/enrollment';
     return fetch(url, {
       method: 'post',
       credentials: 'include'
@@ -39,7 +41,7 @@ export class SectionServiceClient {
     });
   }
   removeSection(sectionId) {
-    const url = 'http://localhost:4000/api/section/' + sectionId;
+    const url = this.REMOTE_URL + '/api/section/' + sectionId;
     return fetch(url, {
       method: 'delete',
       credentials: 'include'
@@ -47,7 +49,7 @@ export class SectionServiceClient {
   }
   updateSection(sectionId, name, seats) {
     const update = {name, seats};
-    const url = 'http://localhost:4000/api/section/' + sectionId;
+    const url = this.REMOTE_URL + '/api/section/' + sectionId;
     return fetch(url, {
       body: JSON.stringify(update),
       method: 'put',

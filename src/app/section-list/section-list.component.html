@@ -6,8 +6,10 @@
     </li>
     <li *ngFor="let section of sections"
         class="list-group-item">
-      {{section.name}}:{{section.seats}}
-      <button [hidden]="!logged"
+      {{section.name}} | seats: {{section.seats}}
+      <button [hidden]="section.seats !== 0"
+              class="btn-danger">Fully Enrolled</button>
+      <button [hidden]="!logged || section.seats === 0"
               (click)="enroll(section)"
               class="float-right btn-primary">
         Enroll</button>

@@ -11,29 +11,44 @@ import {UserServiceClient} from '../services/user.service.client';
 export class AdminComponent implements OnInit {
 
   constructor(private service1: CourseServiceClient,
-              private service2: SectionServiceClient,
-              private service3: UserServiceClient) { }
+              private service2: SectionServiceClient) { }
 
   courses = [];
   sections = [];
-  currentCourse;
+  selectedCourseId;
   sectionName = '';
   seats = '';
   createSection() {
     this.service2
       .createSection(
-        this.currentCourse.id,
+        this.selectedCourseId,
         this.sectionName,
         this.seats)
       .then(() => {
-        this.findSectionsForCourse(this.currentCourse);
+        this.findSectionsForCourse(this.selectedCourseId);
       });
   }
-  findSectionsForCourse(course) {
-    this.currentCourse = course;
+  findSectionsForCourse(courseId) {
+    this.selectedCourseId = courseId;
     this.service2
-      .findSectionsForCourse(course.id)
+      .findSectionsForCourse(courseId)
       .then(sections => this.sections = sections);
+  }
+  removeSection(sectionId) {
+    this.service2.removeSection(sectionId)
+      .then(() => {
+        this.findSectionsForCourse(this.selectedCourseId);
+      });
+  }
+  selectSection(section) {
+    this.sectionName = section.name;
+    this.seats = section.seats;
+  }
+  editSection(sectionId, name, seats) {
+    this.service2.
+      updateSection(sectionId, name, seats)
+      .then(() =>
+      this.findSectionsForCourse(this.selectedCourseId));
   }
   ngOnInit() {
     this.service1

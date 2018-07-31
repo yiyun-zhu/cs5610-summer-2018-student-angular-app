@@ -15,13 +15,29 @@ export class ProfileComponent implements OnInit {
               private service1: SectionServiceClient,
               private router: Router) { }
   user = new User();
-  update() {
+  sections = [];
+  update(firstName, lastName, email) {
+    this.service
+      .updateUser(firstName, lastName, email)
+      .then();
   }
   logout() {
     this.service.logout()
       .then(() => {
         this.router.navigate(['login']);
       });
+  }
+  unenroll(sectionId) {
+    this.service1
+      .unenrollStudentFromSection(sectionId)
+      .then(() => {
+        this.loadSections();
+      });
+  }
+  loadSections() {
+    this.service1
+      .findSectionsForStudent()
+      .then(sections => this.sections = sections);
   }
   ngOnInit() {
     this.service.profile()
@@ -30,8 +46,6 @@ export class ProfileComponent implements OnInit {
           this.user = user;
         }
       });
-    this.service1
-      .findSectionsForStudent();
+    this.loadSections();
   }
-
 }

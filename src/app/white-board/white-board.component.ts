@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
-import {User} from '../models/user.model.clients';
+import {SectionServiceClient} from '../services/section.service.client';
 
 @Component({
   selector: 'app-white-board',
@@ -9,10 +9,11 @@ import {User} from '../models/user.model.clients';
 })
 export class WhiteBoardComponent implements OnInit {
 
-  constructor(private service: UserServiceClient) { }
+  constructor(private service: UserServiceClient,
+              private service1: SectionServiceClient) { }
 
   username = null;
-  courses = [];
+  sections = [];
   ngOnInit() {
     this.service
       .profile()
@@ -21,6 +22,9 @@ export class WhiteBoardComponent implements OnInit {
             this.username = user.username;
           }
        });
+    this.service1
+      .findSectionsForStudent()
+      .then(
+        sections => this.sections = sections);
   }
-
 }

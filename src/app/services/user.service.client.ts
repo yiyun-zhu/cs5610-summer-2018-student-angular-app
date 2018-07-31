@@ -16,7 +16,8 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }})
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(err => null);
   }
   profile() {
     return fetch('http://localhost:4000/api/profile', {
@@ -35,7 +36,19 @@ export class UserServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(err => null);
+  }
+  updateUser(firstName, lastName, email) {
+    const update = {firstName, lastName, email};
+    return fetch('http://localhost:4000/api/profile', {
+      body: JSON.stringify(update),
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
   }
 
 }

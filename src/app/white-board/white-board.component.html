@@ -8,10 +8,11 @@
   <div [hidden]="!username">
     <p>Welcome, <a routerLink="/profile">{{username}}</a></p>
     <div [hidden]="username === 'admin'">
-      <h2>Courses Enrolled</h2>
+      <h2>Sections Enrolled</h2>
       <ul class="list-group">
-        <li class="list-group-item">
-          course
+        <li *ngFor="let enrollment of sections"
+            class="list-group-item">
+          {{enrollment.section.name}}
         </li>
       </ul>
     </div>

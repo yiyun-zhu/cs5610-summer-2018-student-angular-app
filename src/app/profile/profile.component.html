@@ -5,7 +5,7 @@
      routerLink="/admin">Go To Admin Page</a>
   <br/>
   <input [(ngModel)]="user.username"
-         placeholder="username"
+         placeholder="username" readonly
          class="form-control"/>
   <input [(ngModel)]="user.firstName"
          placeholder="first name"
@@ -16,7 +16,7 @@
   <input [(ngModel)]="user.email"
   placeholder="email"
   class="form-control"/>
-  <button (click)="update()"
+  <button (click)="update(user.firstName, user.lastName, user.email)"
           class="btn btn-primary btn-block">
     Update
   </button>
@@ -26,4 +26,16 @@
   <a class="float-right"
       routerLink="/home">Home</a>
 
+  <div [hidden]="user.username === 'admin'">
+    <h2>Sections: {{sections.length}}</h2>
+    <ul class="list-group">
+      <li *ngFor="let enrollment of sections"
+          class="list-group-item">
+        Course: {{enrollment.section.courseId}} | {{enrollment.section.name}}
+        <button (click)="unenroll(enrollment.section._id)"
+                class="float-right btn-danger">
+          Unenroll</button>
+      </li>
+    </ul>
+  </div>
 </div>

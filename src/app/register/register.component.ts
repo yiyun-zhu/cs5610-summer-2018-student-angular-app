@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
       this.service
         .createUser(username, password)
         .then(response => {
-          // console.log(user);
           if (response === null) {
             alert('username already exists!');
           } else {

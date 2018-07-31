@@ -9,8 +9,9 @@
           Courses List
         </li>
         <li *ngFor="let course of courses"
-            class="list-group-item"
-            (click)="findSectionsForCourse(course)">
+            [ngClass]="{'active': selectedCourseId === course.id}"
+            class="list-group-item wbdv"
+            (click)="findSectionsForCourse(course.id)">
           {{course.id}}:{{course.title}}
         </li>
       </ul>
@@ -22,9 +23,14 @@
         </li>
         <li *ngFor="let section of sections"
             class="list-group-item">
-          {{section.name}}:{{section.seats}}
+          <a (click)="selectSection(section)">{{section.name}}:{{section.seats}}</a>
+          <button class="float-right"
+                  (click)="removeSection(section._id)">Remove</button>
+          <button class="float-right"
+                  (click)="editSection(section._id, sectionName, seats)">Edit</button>
         </li>
       </ul>
+      <p>click each section to edit in the forms below</p>
       <br/>
       <button (click)="createSection()"
               class="btn btn-success btn-block">

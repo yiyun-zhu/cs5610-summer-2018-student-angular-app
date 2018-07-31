@@ -3,6 +3,7 @@ import {SectionServiceClient} from '../services/section.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {CourseServiceClient} from '../services/course.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {Course} from '../models/course.model.client';
 
 @Component({
   selector: 'app-section-list',
@@ -12,19 +13,16 @@ import {UserServiceClient} from '../services/user.service.client';
 export class SectionListComponent implements OnInit {
 
   constructor(private service: SectionServiceClient,
-              private service1: CourseServiceClient,
               private service2: UserServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe(
       params => this.loadSection(params.courseId));
   }
 
-  // course;
   courseId = '';
   sections = [];
   logged = false;
   loadSection(courseId) {
-    this.courseId = courseId;
     this.findSectionsForCourse(courseId);
   }
   findSectionsForCourse(courseId) {
@@ -33,7 +31,6 @@ export class SectionListComponent implements OnInit {
       .then(sections => this.sections = sections);
   }
   enroll(section) {
-    // console.log(section);
     this.service
       .enrollStudentInSection(section._id)
       .then(response => {
@@ -45,9 +42,6 @@ export class SectionListComponent implements OnInit {
       });
   }
   ngOnInit() {
-    // this.service1
-    //   .findCourseById(this.courseId)
-    //   .then(course => this.course = course);
     this.service2.profile()
       .then(user => {
         if (user) {
